@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { Navbar } from "@/components/Navbar";
@@ -22,7 +23,9 @@ export default function RootLayout({
         {/* Main Layout wrapper */}
         <div className="flex w-full h-full">
           {/* Persistent Sidebar */}
-          <Sidebar />
+          <Suspense fallback={<div className="w-72 bg-slate-900 h-screen shrink-0 border-r border-slate-800"></div>}>
+            <Sidebar />
+          </Suspense>
 
           {/* Right Content Area */}
           <div className="flex-1 flex flex-col h-full overflow-hidden">
